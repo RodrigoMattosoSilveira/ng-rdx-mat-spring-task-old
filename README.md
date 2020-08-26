@@ -34,6 +34,19 @@ We will address this based on the workflow:
 ##Angular Material
 My original `Todo` application was a tour de force, quite ugly! We will strive for a more elegant approach.
 
+#Project Structure
+We will create the `backend` and `frontend`, grooming them to fit our target structure;
+##Project root folder
+Create the `project root folder`
+````shell script
+$ cd ~/projects
+$ mkdir ng-rdx-mat-spring-task
+````
+Notes:
+1. I'm a `MAC` user;
+1. I keep all my projects on my `home's project folder`;
+1. I named my `project root folder` `ng-rdx-mat-spring-task`;
+1. Note that I used `tssk` instead of `todo` to overcome my IDE use of `todo` as a reserved word;
 #Links
 ##Blogs
   * [Building a Web Application with Spring Boot and Angular](https://www.baeldung.com/spring-boot-angular-web);
@@ -49,6 +62,8 @@ My original `Todo` application was a tour de force, quite ugly! We will strive f
   * [Angular-CLI](https://angular.io/cli) - A command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell;
   * [Angular Material](https://material.angular.io/) - Material Design components for Angular;
   * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin) - Maven plugin to support frontend development, leveraging Node.js, while decoupling it from the backend;
+  * [git](https://git-scm.com/) - A free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency;
+  * [GitHub](https://github.com/) -A development platform inspired by the way you work; you can host and review code, manage projects, and build software alongside 50 million developers.
   * [Heroku](https://www.heroku.com/) - Platform as a service based on a managed container system, with integrated data services and a powerful ecosystem, for deploying and running modern apps;
   * [Material UI]() - Material Design components for React;
   * [Maven](https://maven.apache.org/) - A software project management and comprehension tool;
