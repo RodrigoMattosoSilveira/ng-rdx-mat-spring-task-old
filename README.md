@@ -71,6 +71,64 @@ Notes:
 1. I used `ng-rdx-mat-spring-task` as my `project root name`;
 1. My `GitHub` account is `https://github.com/RodrigoMattosoSilveira`; you have to substitute it for yours;
 
+##Backend
+###Spring Boot Structure
+I'll use my IDE, IntelliJ IDEA, to create the `backend` module for me, as follows; 
+   1. Module SDK: 
+      1. Project SDK 14
+   1. Project Settings:
+      1. Default: https://start.spring.io
+      1. Group: com.madronetek
+      1. Java version: 14
+   1. Dependencies <we will use them with the application>:
+      1. Developer Tools: Spring Boot DevTools
+      1. Web: Spring Web
+      1. Template Engines: Thymeleaf
+      1. Security: Spring Security
+      1. SQL: H2 Database
+   1. Location:
+      1. Module Name: backend
+      1. Content root<filled up by the IDE>: ~/projects/ng-rdx-mat-spring-task/backend
+      1. Module file location: <filled up by the IDE>: ~/projects/ng-rdx-mat-spring-task/backend
+ 
+The file structure after the configuration is:
+```text
+|- ng-rdx-mat-spring-task
+   |- ./
+   |- ../
+   |- .git/
+   |- backend/
+      |- .mvn/
+      |- src/
+         |- main
+            |- java
+               |- com
+                  |- madronetek
+                     |- task
+                        |- TaskApplication.java
+            |- resources
+               |- static/
+               |- templates/
+               |- application.properties
+         |- test
+            |- java
+               |- com
+                  |- madronetek
+                     |- task
+                        |- TaskApplicationTests.java
+      |- .gitignore
+      |- backend.iml
+      |- HELP.md
+      |- mvnw
+      |- mvnw.cmd
+      |- pom.xml
+  |- README.md
+````
+
+Notes:
+1. If not using your IDE,you can navigate to [Spring Boot Initializer](https://start.spring.io/), create it, save the `zip` file to your sandbox, expand the `zip` file and copy its content to your `project root folder`;
+1. I used `com.madronetek` as the group name, you can pick your own; 
+
 #Links
 ##Blogs
   * [Building a Web Application with Spring Boot and Angular](https://www.baeldung.com/spring-boot-angular-web);
