@@ -91,7 +91,7 @@ I'll use my IDE, IntelliJ IDEA, to create the `backend` module for me, as follow
       1. Content root<filled up by the IDE>: ~/projects/ng-rdx-mat-spring-task/backend
       1. Module file location: <filled up by the IDE>: ~/projects/ng-rdx-mat-spring-task/backend
  
-The file structure after the configuration is:
+The file structure after creating the module is:
 ```text
 |- ng-rdx-mat-spring-task
    |- ./
@@ -128,6 +128,129 @@ The file structure after the configuration is:
 Notes:
 1. If not using your IDE,you can navigate to [Spring Boot Initializer](https://start.spring.io/), create it, save the `zip` file to your sandbox, expand the `zip` file and copy its content to your `project root folder`;
 1. I used `com.madronetek` as the group name, you can pick your own; 
+
+###Refactor backend
+Our goal is to manage the `frontend` and `backend` development from the `project root`; to achieve it, we:
+1. Move the maven files to the `project root folder`; 
+1. Copy the `backend pom` to the `project root folder`
+1. Link `parent pom`  to its `backend child pom`;
+1. Re-factor `parent pom`  and `backend child pom` accordingly;
+
+````shell script
+$ cd ~/projects/ng-rdx-mat-spring-task
+$ mv ./backend/mvnw .
+$ mv ./backend/mvnw.cmd .
+$ cp ./backend/pom.xml .
+````
+
+The file structure after these steps is:
+````text
+|- ng-rdx-mat-spring-task
+   |- ./
+   |- ../
+   |- .git/
+   |- backend/
+     |- .mvn
+     |- src
+         ...
+     |- .gitignore
+     |- backend.iml
+     |- HELP.md
+     |- pom.xml
+   |- mvnw
+   |- mvnw.cmd
+   |- pom.xml
+   |- README.md
+````
+Notes:
+1. If not using your IDE,you can navigate to [Spring Boot Initializer](https://start.spring.io/), create it, save the `zip` file to your sandbox, expand the `zip` file and copy its content to your `project root folder`;
+1. I used `com.madronetek` as the group name, you can pick your own; 
+
+###Refactor POMs
+We will set up a `project`, a `backend` and a `frontend` POM:
+````text
+|- ng-rdx-mat-spring-task
+   ...
+   |- backend/
+     ...
+     |- pom.xml
+   ...
+     |- frontend/
+      ...
+      |- pom.xml
+  ...
+  |- pom.xml
+````
+
+####Parent POM
+The `project pom` establishes:
+* its parent, `org.springframework.boot`
+* the `groupId` and `artifactId` we will used for its children;
+* a few properties
+* its descendants
+
+````xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.madronetek</groupId>
+	<artifactId>task</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Task</name>
+	<description>Learn how to use Angular, Redux, Material, Springboot, using a Task (e.g. Todo) multi-module app</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>14</java.version>
+	</properties>
+
+	<modules>
+		<module>backend</module>
+		<module>frontend</module>
+	</modules>
+
+
+</project>
+````
+
+####Backend POM
+We will:
+* preserve the `maven dependencies` – the application will look for them there;
+* specify which artifact is the parent for this pom we will use the fully qualified artifact name of the `parent pom` – ng-rdx-mat-spring-task in my case;
+* keep the groupId and the version of the module the same as its parent;
+
+````xml
+<!-- backend/pom.xml -->
+…
+<artifactId>backend</artifactId>
+<name>backend</name>
+<description>The Spring Boot backend module</description>
+…
+<parent>
+    <groupId>com.madronetek</groupId>
+    <artifactId>task</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+…
+<dependencies>
+    …
+</dependencies>
+<build>
+    …
+</build>
+````
 
 #Links
 ##Blogs
