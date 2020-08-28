@@ -269,6 +269,35 @@ In order to make this work on my IDE, I'll cheat, create an empty `Java` module,
   |- pom.xml
 ````
 
+###Frontend POM
+Refactored the defult `frontend pom` to reflect the new structure:
+````xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.madronetek</groupId>
+        <artifactId>task</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <artifactId>frontend</artifactId>
+    <name>frontend</name>
+    <description>Frontend Module</description>
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <plugins></plugins>
+    </build>
+
+</project>
+````
+
 #Links
 ##Blogs
   * [Building a Web Application with Spring Boot and Angular](https://www.baeldung.com/spring-boot-angular-web);
