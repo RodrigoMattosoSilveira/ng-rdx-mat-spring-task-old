@@ -251,6 +251,23 @@ We will:
     …
 </build>
 ````
+##Frontend
+###Structure
+In order to make this work on my IDE, I'll cheat, create an empty `Java` module, and call it, you guessed, `frontend`:
+````text
+|- ng-rdx-mat-spring-task
+   ...
+   |- backend/
+     ...
+     |- pom.xml
+   ...
+     |- frontend/
+      |- src
+         |- main
+      |- pom.xml
+  ...
+  |- pom.xml
+````
 
 #Links
 ##Blogs
